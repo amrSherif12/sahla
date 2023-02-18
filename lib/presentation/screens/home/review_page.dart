@@ -77,9 +77,8 @@ class _ReviewPageState extends State<ReviewPage> {
                           widget.id,
                           controller.text,
                           widget.review.stars,
+                          context,
                         );
-
-                        Navigator.pop(context);
                       },
                       child: const Text(
                         "POST",
@@ -142,7 +141,8 @@ class _ReviewPageState extends State<ReviewPage> {
                               borderRadius: BorderRadius.circular(25),
                               borderSide:
                                   BorderSide(width: 1, color: ColorConst.base)),
-                          label: const Text("Describe your experience"),
+                          label:
+                              const Text("Describe your experience (optional)"),
                           labelStyle: TextStyle(
                               color: ColorConst.base, fontFamily: 'F'),
                         ),

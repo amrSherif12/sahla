@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:king_app/logic/cubits/nav_bar_cubit.dart';
 import 'package:king_app/presentation/screens/drawer.dart';
 import 'package:king_app/presentation/screens/home/home.dart';
+import 'package:king_app/presentation/screens/home/offers.dart';
 import 'package:king_app/presentation/screens/home/review_page.dart';
 import 'package:king_app/presentation/screens/home/see_all_reviews.dart';
 import 'package:king_app/presentation/screens/loading_screen.dart';
@@ -12,6 +13,8 @@ import 'package:king_app/presentation/screens/home/service_info.dart';
 import 'package:king_app/presentation/screens/home/sevice_list.dart';
 import 'package:king_app/presentation/screens/authentication/sign_up.dart';
 import 'package:king_app/presentation/screens/undefined_screen.dart';
+import 'package:king_app/presentation/screens/unsupported_platform.dart';
+import 'package:page_transition/page_transition.dart';
 import 'logic/cubits/drawer_cubit.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -37,8 +40,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case Routes.serviceInfoRoute:
       final args = settings.arguments as InfoPage;
-      return MaterialPageRoute(
-        builder: (context) => InfoPage(
+      return PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: InfoPage(
           type: args.type,
           service: args.service,
           id: args.id,
@@ -47,8 +51,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case Routes.serviceListRoute:
       final args = settings.arguments as ServiceList;
-      return MaterialPageRoute(
-        builder: (context) => ServiceList(
+      return PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: ServiceList(
           type: args.type,
           service: args.service,
         ),
@@ -63,8 +68,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case Routes.reviewPageRoute:
       final args = settings.arguments as ReviewPage;
-      return MaterialPageRoute(
-        builder: (context) => ReviewPage(
+      return PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: ReviewPage(
           name: args.name,
           service: args.service,
           type: args.type,
@@ -75,10 +81,21 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case Routes.seeAllReviewsRoute:
       final args = settings.arguments as SeeAllReviews;
-      return MaterialPageRoute(
-        builder: (context) => SeeAllReviews(
+      return PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: SeeAllReviews(
           reviews: args.reviews,
         ),
+      );
+
+    case Routes.offersRoute:
+      return MaterialPageRoute(
+        builder: (context) => const Offers(),
+      );
+
+    case Routes.unsupportedPlatformRoute:
+      return MaterialPageRoute(
+        builder: (context) => const UnsupportedPlatform(),
       );
 
     default:

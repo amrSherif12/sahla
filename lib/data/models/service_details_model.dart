@@ -4,20 +4,20 @@ import 'package:king_app/data/models/service_model.dart';
 import 'package:king_app/data/models/stars_model.dart';
 
 class ServiceDetailsModel extends ServiceModel {
-  ServiceDetailsModel({
-    required String id,
-    required String img,
-    required String name,
-    required this.phoneNumber,
-    required this.reviews,
-    required this.location,
-    required this.averageRating,
-    required this.userReview,
-    required this.starsCount,
-    required this.textReviews,
-    required this.facebook,
-    required this.instagram
-  }) : super(id: id, img: img, name: name);
+  ServiceDetailsModel(
+      {required String id,
+      required String img,
+      required String name,
+      required this.phoneNumber,
+      required this.reviews,
+      required this.location,
+      required this.averageRating,
+      required this.userReview,
+      required this.starsCount,
+      required this.textReviews,
+      required this.facebook,
+      required this.instagram})
+      : super(id: id, img: img, name: name);
 
   String phoneNumber;
   GeoPoint location;
@@ -30,7 +30,9 @@ class ServiceDetailsModel extends ServiceModel {
   String facebook;
 
   factory ServiceDetailsModel.fromSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> document, String uid, String name) {
+      DocumentSnapshot<Map<String, dynamic>> document,
+      String uid,
+      String name) {
     final data = document.data()!;
     final reviews = ReviewsModel.fromMap(data["reviews"]);
     return ServiceDetailsModel(

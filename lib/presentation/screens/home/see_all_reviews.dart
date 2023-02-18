@@ -57,9 +57,9 @@ class SeeAllReviews extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
                       child: ReviewBuilder(
-                          name: review.userName,
-                          rating: review.stars,
-                          review: review.review,
+                        name: review.userName,
+                        rating: review.stars,
+                        review: review.review,
                         blueBack: true,
                       ),
                     );

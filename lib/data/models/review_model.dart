@@ -13,15 +13,17 @@ class ReviewsModel {
     for (int i = 0; i < reviews.length; i++) {
       rating += reviews[i].stars;
     }
-    if(reviews.isNotEmpty){
+    if (reviews.isNotEmpty) {
       return rating / reviews.length;
     } else {
       return rating;
     }
   }
 
-  static ReviewModel getUserReview(List<ReviewModel> reviews, String uid, String name) {
-    ReviewModel userRating = ReviewModel(uid: uid, userName: name, stars: 0, review: "");
+  static ReviewModel getUserReview(
+      List<ReviewModel> reviews, String uid, String name) {
+    ReviewModel userRating =
+        ReviewModel(uid: uid, userName: name, stars: 0, review: "");
     for (int i = 0; i < reviews.length; i++) {
       if (reviews[i].uid == uid) {
         userRating = reviews[i];
@@ -66,11 +68,11 @@ class ReviewsModel {
         fiveStars: five);
   }
 
-  static List<ReviewModel> getTextReviews(List<ReviewModel> reviews){
+  static List<ReviewModel> getTextReviews(List<ReviewModel> reviews) {
     List<ReviewModel> textReviews = [];
-    for(int i = 0; i < reviews.length; i++){
+    for (int i = 0; i < reviews.length; i++) {
       final review = reviews[i].review;
-      if(review.isNotEmpty){
+      if (review.isNotEmpty) {
         textReviews.add(reviews[i]);
       }
     }

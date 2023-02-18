@@ -50,11 +50,63 @@ class _ServiceListState extends State<ServiceList> {
                     .getDocuments(widget.type, widget.service.toLowerCase()),
                 builder: (BuildContext context,
                     AsyncSnapshot<ServiceListModel> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
+                  if (snapshot.data == null &&
+                      snapshot.connectionState == ConnectionState.done) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.error_outline,
+                          size: 70,
+                          color: Colors.white,
+                        ),
+                        const FittedBox(
+                          child: Padding(
+                            padding: EdgeInsets.all(30),
+                            child: Text(
+                              "Something went wrong!",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'F',
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: const Icon(
+                                  Icons.arrow_back_ios_new,
+                                  size: 40,
+                                  color: Colors.white,
+                                )),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const FittedBox(
+                              child: Text(
+                                "go back",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'F',
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    );
+                  } else if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.data!.list.isNotEmpty) {
                     return ListView.builder(
                       itemBuilder: (context, index) {
                         return Service(
+                          index: index,
                           data: snapshot.data!.list[index],
                           type: widget.type,
                           service: widget.service,
@@ -72,10 +124,13 @@ class _ServiceListState extends State<ServiceList> {
                     return const Center(
                       child: FittedBox(
                         child: Padding(
-                          padding:  EdgeInsets.all(80),
+                          padding: EdgeInsets.all(80),
                           child: Text(
                             "No Services!",
-                            style: TextStyle(fontSize: 50, fontFamily: 'F', color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 50,
+                                fontFamily: 'F',
+                                color: Colors.white),
                           ),
                         ),
                       ),
@@ -92,7 +147,10 @@ class _ServiceListState extends State<ServiceList> {
                       children: [
                         const Text(
                           "No Internet!",
-                          style: TextStyle(fontSize: 50, fontFamily: 'F', color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 50,
+                              fontFamily: 'F',
+                              color: Colors.white),
                         ),
                         Row(
                           children: [
@@ -110,7 +168,10 @@ class _ServiceListState extends State<ServiceList> {
                             ),
                             const Text(
                               "refresh",
-                              style: TextStyle(fontSize: 30, fontFamily: 'F', color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'F',
+                                  color: Colors.white),
                             ),
                           ],
                         )

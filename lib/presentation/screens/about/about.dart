@@ -16,7 +16,7 @@ class About extends StatelessWidget {
           style: TextStyle(fontFamily: 'F', fontSize: 40),
         ),
         centerTitle: true,
-        backgroundColor: ColorConst.mainColor,
+        backgroundColor: ColorConst.secColor,
         toolbarHeight: 120,
       ),
       body: SingleChildScrollView(
@@ -194,7 +194,10 @@ class About extends StatelessWidget {
                         child: Text(
                           "amrsheif99@gmail.com",
                           style: TextStyle(
-                              color: Colors.blue, fontFamily: "F", fontSize: 23,),
+                            color: Colors.blue,
+                            fontFamily: "F",
+                            fontSize: 23,
+                          ),
                         ),
                       ),
                     )

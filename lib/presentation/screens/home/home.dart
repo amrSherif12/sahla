@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        systemNavigationBarColor: ColorConst.mainColor,
+        systemNavigationBarColor: ColorConst.secColor,
         statusBarColor: Colors.transparent));
 
     super.initState();
@@ -62,11 +62,11 @@ class _HomeState extends State<Home> {
                       ),
                       const FittedBox(
                         child: Text(
-                          "App Name",
+                          "Sahla",
                           style: TextStyle(
                               fontFamily: 'F',
                               color: Colors.white,
-                              fontSize: 25),
+                              fontSize: 35),
                         ),
                       ),
                       const SizedBox(
@@ -139,7 +139,7 @@ class _HomeState extends State<Home> {
                               type: "food",
                             ),
                             ServiceType(
-                              service: 'Meat',
+                              service: 'Animal Products',
                               type: "food",
                             ),
                             ServiceType(
@@ -373,8 +373,8 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: FittedBox(
         child: GNav(
           gap: 5,
-          tabBackgroundColor: ColorConst.secColor,
-          backgroundColor: ColorConst.mainColor,
+          tabBackgroundColor: ColorConst.mainColor,
+          backgroundColor: ColorConst.secColor,
           padding: const EdgeInsets.all(25),
           onTabChange: (index) {
             if (index == 0) {

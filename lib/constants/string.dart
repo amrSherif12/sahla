@@ -9,4 +9,6 @@ class Routes {
   static const String serviceInfoRoute = '/service_info';
   static const String reviewPageRoute = '/review_page';
   static const String seeAllReviewsRoute = '/see_all_reviews';
+  static const String offersRoute = '/offers';
+  static const String unsupportedPlatformRoute = '/unsupported_platform';
 }

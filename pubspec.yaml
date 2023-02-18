@@ -42,7 +42,6 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   syncfusion_flutter_charts: ^20.3.61
   loading_animation_widget: ^1.2.0+4
-  google_sign_in: ^5.4.2
   flutter_bloc: ^8.1.1
   bloc: ^8.1.0
   email_validator: ^2.1.16
@@ -52,6 +51,9 @@ dependencies:
   cached_network_image: ^3.2.3
   internet_connection_checker: ^1.0.0+1
   url_launcher: ^6.1.8
+  page_transition: ^2.0.9
+  animate_do: ^3.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,19 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
+  flutter_launcher_icons: ^0.11.0
+  flutter_app_name: ^0.1.0
+  flutter_native_splash: 2.2.0+1
+
+flutter_icons:
+  android: true
+  image_path: "assets/imgs/logo.png"
+
+flutter_app_name:
+  name: "Sahla"
+
+flutter_native_splash:
+  background_image: "assets/imgs/splash.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

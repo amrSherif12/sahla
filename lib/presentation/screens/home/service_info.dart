@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -72,35 +73,54 @@ class _InfoPageState extends State<InfoPage> {
                         Stack(
                           children: [
                             ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(35),
-                                    bottomRight: Radius.circular(35)),
-                                child: CachedNetworkImage(
-                                  imageUrl: snapshot.data!.img,
-                                  placeholder: (context, img) {
-                                    return Container(
-                                      width: double.infinity,
-                                      height: 200,
-                                      decoration: const BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Color(0xFFEBEBF4),
-                                            Color(0xFFF4F4F4),
-                                            Color(0xFFEBEBF4),
-                                          ],
-                                          stops: [
-                                            0.1,
-                                            0.3,
-                                            0.4,
-                                          ],
-                                          begin: Alignment(-1.0, -0.3),
-                                          end: Alignment(1.0, 0.3),
-                                          tileMode: TileMode.clamp,
+                              borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(35),
+                                  bottomRight: Radius.circular(35)),
+                              child: snapshot.data!.img == "null"
+                                  ? Column(
+                                      children: const [
+                                        SizedBox(
+                                          height: 20,
                                         ),
-                                      ),
-                                    );
-                                  },
-                                )),
+                                        Center(
+                                          child: FittedBox(
+                                            child: Icon(
+                                              Icons
+                                                  .image_not_supported_outlined,
+                                              size: 170,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : CachedNetworkImage(
+                                      imageUrl: snapshot.data!.img,
+                                      placeholder: (context, img) {
+                                        return Container(
+                                          width: double.infinity,
+                                          height: 200,
+                                          decoration: const BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                Color(0xFFEBEBF4),
+                                                Color(0xFFF4F4F4),
+                                                Color(0xFFEBEBF4),
+                                              ],
+                                              stops: [
+                                                0.1,
+                                                0.3,
+                                                0.4,
+                                              ],
+                                              begin: Alignment(-1.0, -0.3),
+                                              end: Alignment(1.0, 0.3),
+                                              tileMode: TileMode.clamp,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                            ),
                             SafeArea(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -131,379 +151,446 @@ class _InfoPageState extends State<InfoPage> {
                               padding: const EdgeInsets.all(25),
                               child: Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      FittedBox(
-                                        child: Row(
-                                          children: [
-                                            const Icon(
-                                              Icons.phone_android,
-                                              color: Colors.white,
-                                            ),
-                                            const SizedBox(
-                                              width: 15,
-                                            ),
-                                            SelectableText(
-                                              snapshot.data!.phoneNumber,
-                                              style: const TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'F',
-                                                  color: Colors.white),
-                                            ),
-                                            const SizedBox(
-                                              width: 50,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      FittedBox(
-                                        child: Text(
-                                          snapshot.data!.name,
-                                          style: const TextStyle(
-                                              fontSize: 25,
-                                              fontFamily: 'F',
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Divider(
-                                    height: 30,
-                                    thickness: 2,
-                                    color: Colors.grey[800],
-                                  ),
-                                  FittedBox(
-                                    child: Row(
+                                  FadeInUp(
+                                    delay: const Duration(milliseconds: 100),
+                                    child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: GestureDetector(
-                                                  onTap: () async {
-                                                    await launchUrl(
-                                                      Uri(
-                                                          scheme: 'https',
-                                                          host:
-                                                              'www.instagram.com',
-                                                          path: snapshot
-                                                              .data!.instagram),
-                                                      mode: LaunchMode
-                                                          .externalNonBrowserApplication,
-                                                    );
-                                                  },
-                                                  child: Image.asset(
-                                                      'assets/imgs/instaLogo.png')),
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            SizedBox(
-                                              width: 44,
-                                              height: 44,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                child: GestureDetector(
-                                                    onTap: () async {
-                                                      await launchUrl(
-                                                        Uri(
-                                                            scheme: 'https',
-                                                            host:
-                                                                'www.facebook.com',
-                                                            path: snapshot.data!
-                                                                .facebook),
-                                                        mode: LaunchMode
-                                                            .externalApplication,
-                                                      );
-                                                    },
-                                                    child: Image.asset(
-                                                        'assets/imgs/facebookLogo.png')),
+                                        FittedBox(
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.phone_android,
+                                                color: Colors.white,
                                               ),
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            SizedBox(
-                                              width: 44,
-                                              height: 44,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(9),
-                                                child: GestureDetector(
-                                                    onTap: () async {
-                                                      await launchUrl(
-                                                        Uri(
-                                                            scheme: 'tel',
-                                                            path: snapshot.data!
-                                                                .phoneNumber),
-                                                        mode: LaunchMode
-                                                            .externalNonBrowserApplication,
-                                                      );
-                                                    },
-                                                    child: Image.asset(
-                                                        'assets/imgs/dial.png')),
+                                              const SizedBox(
+                                                width: 15,
                                               ),
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            SizedBox(
-                                              width: 44,
-                                              height: 44,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(9),
-                                                child: GestureDetector(
-                                                    onTap: () async {
-                                                      await launchUrl(
-                                                        Uri(
-                                                            scheme: 'https',
-                                                            host: 'wa.me',
-                                                            path: snapshot.data!
-                                                                .phoneNumber),
-                                                        mode: LaunchMode
-                                                            .externalNonBrowserApplication,
-                                                      );
-                                                    },
-                                                    child: Image.asset(
-                                                        'assets/imgs/whatsapp.jpeg')),
+                                              SelectableText(
+                                                snapshot.data!.phoneNumber,
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontFamily: 'F',
+                                                    color: Colors.white),
                                               ),
-                                            ),
-                                          ],
+                                              const SizedBox(
+                                                width: 50,
+                                              ),
+                                              FittedBox(
+                                                child: Text(
+                                                  snapshot.data!.name,
+                                                  style: const TextStyle(
+                                                      fontSize: 25,
+                                                      fontFamily: 'F',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Divider(
+                                          height: 30,
+                                          thickness: 2,
+                                          color: Colors.grey[800],
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Divider(
-                                    height: 30,
-                                    thickness: 2,
-                                    color: Colors.grey[800],
-                                  ),
-                                  Center(
-                                    child: TextButton(
-                                      onPressed: () {
-                                        MapsLauncher.launchCoordinates(
-                                          snapshot.data!.location.latitude,
-                                          snapshot.data!.location.longitude,
-                                        );
-                                      },
-                                      child: const Text(
-                                        "Show location on map",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          fontFamily: 'F',
+                                  FadeInUp(
+                                    delay: const Duration(milliseconds: 200),
+                                    child: Column(
+                                      children: [
+                                        FittedBox(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: GestureDetector(
+                                                        onTap: () async {
+                                                          await launchUrl(
+                                                            Uri(
+                                                                scheme: 'https',
+                                                                host:
+                                                                    'www.instagram.com',
+                                                                path: snapshot
+                                                                    .data!
+                                                                    .instagram),
+                                                            mode: LaunchMode
+                                                                .externalNonBrowserApplication,
+                                                          );
+                                                        },
+                                                        child: Image.asset(
+                                                            'assets/imgs/instaLogo.png')),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 44,
+                                                    height: 44,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                      child: GestureDetector(
+                                                          onTap: () async {
+                                                            await launchUrl(
+                                                              Uri(
+                                                                  scheme:
+                                                                      'https',
+                                                                  host:
+                                                                      'www.facebook.com',
+                                                                  path: snapshot
+                                                                      .data!
+                                                                      .facebook),
+                                                              mode: LaunchMode
+                                                                  .externalApplication,
+                                                            );
+                                                          },
+                                                          child: Image.asset(
+                                                              'assets/imgs/facebookLogo.png')),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 44,
+                                                    height: 44,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              9),
+                                                      child: GestureDetector(
+                                                          onTap: () async {
+                                                            await launchUrl(
+                                                              Uri(
+                                                                  scheme: 'tel',
+                                                                  path: snapshot
+                                                                      .data!
+                                                                      .phoneNumber),
+                                                              mode: LaunchMode
+                                                                  .externalNonBrowserApplication,
+                                                            );
+                                                          },
+                                                          child: Image.asset(
+                                                              'assets/imgs/dial.png')),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 44,
+                                                    height: 44,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              9),
+                                                      child: GestureDetector(
+                                                          onTap: () async {
+                                                            await launchUrl(
+                                                              Uri(
+                                                                  scheme:
+                                                                      'https',
+                                                                  host: 'wa.me',
+                                                                  path: snapshot
+                                                                      .data!
+                                                                      .phoneNumber),
+                                                              mode: LaunchMode
+                                                                  .externalNonBrowserApplication,
+                                                            );
+                                                          },
+                                                          child: Image.asset(
+                                                              'assets/imgs/whatsapp.jpeg')),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                  Divider(
-                                    height: 30,
-                                    thickness: 2,
-                                    color: Colors.grey[800],
-                                  ),
-                                  const Center(
-                                    child: Text(
-                                      "Your rating",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontFamily: 'F',
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  RatingBar.builder(
-                                    initialRating:
-                                        snapshot.data!.userReview.stars,
-                                    minRating: 1,
-                                    direction: Axis.horizontal,
-                                    ignoreGestures: true,
-                                    itemCount: 5,
-                                    itemPadding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0),
-                                    itemBuilder: (context, _) => const Icon(
-                                      Icons.star,
-                                      color: Colors.blue,
-                                    ),
-                                    unratedColor: Colors.blueGrey,
-                                    onRatingUpdate: (double value) {
-                                      rating = value;
-                                      Navigator.pushNamed(
-                                        context,
-                                        Routes.reviewPageRoute,
-                                        arguments: ReviewPage(
-                                          name: snapshot.data!.name,
-                                          id: widget.id,
-                                          service: widget.service,
-                                          type: widget.type,
-                                          review: snapshot.data!.userReview,
+                                        Divider(
+                                          height: 30,
+                                          thickness: 2,
+                                          color: Colors.grey[800],
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                        context,
-                                        Routes.reviewPageRoute,
-                                        arguments: ReviewPage(
-                                          name: snapshot.data!.name,
-                                          id: widget.id,
-                                          service: widget.service,
-                                          type: widget.type,
-                                          review: snapshot.data!.userReview,
-                                        ),
-                                      );
-                                    },
-                                    child: const Text(
-                                      "Give your review",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontFamily: 'F',
-                                      ),
+                                      ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    height: 30,
-                                  ),
-                                  const Text(
-                                    "Ratings and reviews",
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontFamily: 'F',
-                                        color: Colors.white),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      FittedBox(
-                                        child: Column(
-                                          children: [
-                                            const Text(
-                                              "Rating",
+                                  FadeInUp(
+                                    delay: const Duration(milliseconds: 300),
+                                    child: Column(
+                                      children: [
+                                        Center(
+                                          child: TextButton(
+                                            onPressed: () {
+                                              MapsLauncher.launchCoordinates(
+                                                snapshot
+                                                    .data!.location.latitude,
+                                                snapshot
+                                                    .data!.location.longitude,
+                                              );
+                                            },
+                                            child: const Text(
+                                              "Show location on map",
                                               style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'F',
-                                                  color: Colors.white),
+                                                fontSize: 25,
+                                                fontFamily: 'F',
+                                              ),
                                             ),
-                                            Text(
-                                              snapshot.data!.averageRating
-                                                  .toStringAsFixed(1),
-                                              style: const TextStyle(
-                                                  fontSize: 60,
-                                                  fontFamily: 'F',
-                                                  color: Colors.white),
-                                            ),
-                                            const Icon(
-                                              Icons.star,
-                                              color: Colors.blue,
-                                              size: 65,
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 30,
-                                            ),
-                                            SfCircularChart(
-                                              palette: [
-                                                Colors.blue[100]!,
-                                                Colors.blue[300]!,
-                                                Colors.blue[500]!,
-                                                Colors.blue[700]!,
-                                                Colors.blue[900]!
-                                              ],
-                                              legend: Legend(
-                                                  isVisible: true,
-                                                  shouldAlwaysShowScrollbar:
-                                                      true,
-                                                  overflowMode:
-                                                      LegendItemOverflowMode
-                                                          .scroll,
-                                                  textStyle: const TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15,
-                                                      fontFamily: 'F')),
-                                              series: <CircularSeries>[
-                                                DoughnutSeries<ServiceStars,
-                                                        String>(
-                                                    dataSource: chartData,
-                                                    strokeColor: Colors.white,
-                                                    strokeWidth: 1,
-                                                    xValueMapper:
-                                                        (ServiceStars data,
-                                                                _) =>
-                                                            data.stars,
-                                                    yValueMapper:
-                                                        (ServiceStars data,
-                                                                _) =>
-                                                            data.amount,
-                                                    animationDuration: 4000,
-                                                    enableTooltip: true)
-                                              ],
-                                              tooltipBehavior:
-                                                  TooltipBehavior(enable: true, elevation: 10),
-                                            ),
-                                          ],
+                                        Divider(
+                                          height: 30,
+                                          thickness: 2,
+                                          color: Colors.grey[800],
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  ListView.builder(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) {
-                                      final review =
-                                          snapshot.data!.textReviews[index];
-                                      return ReviewBuilder(
-                                        name: review.userName,
-                                        rating: review.stars,
-                                        review: review.review,
-                                        blueBack: false,
-                                      );
-                                    },
-                                    itemCount:
-                                        snapshot.data!.textReviews.length > 3
-                                            ? 3
-                                            : snapshot.data!.textReviews.length,
-                                  ),
-                                  snapshot.data!.textReviews.length > 3
-                                      ? TextButton(
-                                          onPressed: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              Routes.seeAllReviewsRoute,
-                                              arguments: SeeAllReviews(
-                                                  reviews:
-                                                      snapshot.data!.reviews),
-                                            );
-                                          },
-                                          child: const Text(
-                                            "See all reviews",
+                                  FadeInUp(
+                                    delay: const Duration(milliseconds: 400),
+                                    child: Column(
+                                      children: [
+                                        const Center(
+                                          child: Text(
+                                            "Your rating",
                                             style: TextStyle(
-                                                fontSize: 20,
+                                                fontSize: 25,
                                                 fontFamily: 'F',
                                                 color: Colors.white),
                                           ),
-                                        )
-                                      : Container(),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        RatingBar.builder(
+                                          initialRating:
+                                              snapshot.data!.userReview.stars,
+                                          minRating: 1,
+                                          direction: Axis.horizontal,
+                                          ignoreGestures: true,
+                                          itemCount: 5,
+                                          itemPadding:
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 8.0),
+                                          itemBuilder: (context, _) =>
+                                              const Icon(
+                                            Icons.star,
+                                            color: Colors.blue,
+                                          ),
+                                          unratedColor: Colors.blueGrey,
+                                          onRatingUpdate: (double value) {
+                                            rating = value;
+                                            Navigator.pushNamed(
+                                              context,
+                                              Routes.reviewPageRoute,
+                                              arguments: ReviewPage(
+                                                name: snapshot.data!.name,
+                                                id: widget.id,
+                                                service: widget.service,
+                                                type: widget.type,
+                                                review:
+                                                    snapshot.data!.userReview,
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pushNamed(
+                                              context,
+                                              Routes.reviewPageRoute,
+                                              arguments: ReviewPage(
+                                                name: snapshot.data!.name,
+                                                id: widget.id,
+                                                service: widget.service,
+                                                type: widget.type,
+                                                review:
+                                                    snapshot.data!.userReview,
+                                              ),
+                                            );
+                                          },
+                                          child: const Text(
+                                            "Give your review",
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'F',
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 30,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  FadeInUp(
+                                    delay: const Duration(milliseconds: 500),
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          "Ratings and reviews",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontFamily: 'F',
+                                              color: Colors.white),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            FittedBox(
+                                              child: Column(
+                                                children: [
+                                                  const Text(
+                                                    "Rating",
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontFamily: 'F',
+                                                        color: Colors.white),
+                                                  ),
+                                                  Text(
+                                                    snapshot.data!.averageRating
+                                                        .toStringAsFixed(1),
+                                                    style: const TextStyle(
+                                                        fontSize: 60,
+                                                        fontFamily: 'F',
+                                                        color: Colors.white),
+                                                  ),
+                                                  const Icon(
+                                                    Icons.star,
+                                                    color: Colors.blue,
+                                                    size: 65,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 30,
+                                                  ),
+                                                  SfCircularChart(
+                                                    palette: [
+                                                      Colors.blue[100]!,
+                                                      Colors.blue[300]!,
+                                                      Colors.blue[500]!,
+                                                      Colors.blue[700]!,
+                                                      Colors.blue[900]!
+                                                    ],
+                                                    legend: Legend(
+                                                        isVisible: true,
+                                                        shouldAlwaysShowScrollbar:
+                                                            true,
+                                                        overflowMode:
+                                                            LegendItemOverflowMode
+                                                                .scroll,
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 15,
+                                                                fontFamily:
+                                                                    'F')),
+                                                    series: <CircularSeries>[
+                                                      DoughnutSeries<
+                                                              ServiceStars,
+                                                              String>(
+                                                          dataSource: chartData,
+                                                          strokeColor:
+                                                              Colors.white,
+                                                          strokeWidth: 1,
+                                                          xValueMapper:
+                                                              (ServiceStars
+                                                                          data,
+                                                                      _) =>
+                                                                  data.stars,
+                                                          yValueMapper:
+                                                              (ServiceStars
+                                                                          data,
+                                                                      _) =>
+                                                                  data.amount,
+                                                          animationDuration:
+                                                              4000,
+                                                          enableTooltip: true)
+                                                    ],
+                                                    tooltipBehavior:
+                                                        TooltipBehavior(
+                                                            enable: true,
+                                                            elevation: 10),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  FadeInUp(
+                                    delay: const Duration(milliseconds: 600),
+                                    child: Column(
+                                      children: [
+                                        ListView.builder(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) {
+                                            final review = snapshot
+                                                .data!.textReviews[index];
+                                            return ReviewBuilder(
+                                              name: review.userName,
+                                              rating: review.stars,
+                                              review: review.review,
+                                              blueBack: false,
+                                            );
+                                          },
+                                          itemCount: snapshot.data!.textReviews
+                                                      .length >
+                                                  3
+                                              ? 3
+                                              : snapshot
+                                                  .data!.textReviews.length,
+                                        ),
+                                        snapshot.data!.textReviews.length > 3
+                                            ? TextButton(
+                                                onPressed: () {
+                                                  Navigator.pushNamed(
+                                                    context,
+                                                    Routes.seeAllReviewsRoute,
+                                                    arguments: SeeAllReviews(
+                                                        reviews: snapshot
+                                                            .data!.textReviews),
+                                                  );
+                                                },
+                                                child: const Text(
+                                                  "See all reviews",
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontFamily: 'F',
+                                                      color: Colors.white),
+                                                ),
+                                              )
+                                            : Container(),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -532,7 +619,10 @@ class _InfoPageState extends State<InfoPage> {
                             padding: EdgeInsets.all(30),
                             child: Text(
                               "Something went wrong!",
-                              style: TextStyle(fontSize: 30, fontFamily: 'F', color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'F',
+                                  color: Colors.white),
                             ),
                           ),
                         ),
@@ -554,7 +644,10 @@ class _InfoPageState extends State<InfoPage> {
                             const FittedBox(
                               child: Text(
                                 "go back",
-                                style: TextStyle(fontSize: 30, fontFamily: 'F', color: Colors.white),
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'F',
+                                    color: Colors.white),
                               ),
                             ),
                           ],
@@ -565,43 +658,43 @@ class _InfoPageState extends State<InfoPage> {
                 },
               );
             } else if (snapshot.data == false) {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  await Future.delayed(const Duration(milliseconds: 200));
-                  setState(() {});
-                },
-                child: Center(
-                  child: FittedBox(
-                    child: Padding(
-                      padding: const EdgeInsets.all(80),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "No Internet!",
-                            style: TextStyle(fontSize: 50, fontFamily: 'F', color: Colors.white),
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                  },
-                                  icon: const Icon(
-                                    Icons.refresh,
-                                    size: 40,
-                                    color: Colors.white,
-                                  )),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              const Text(
-                                "refresh",
-                                style: TextStyle(fontSize: 30, fontFamily: 'F', color: Colors.white),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
+              return Center(
+                child: FittedBox(
+                  child: Padding(
+                    padding: const EdgeInsets.all(80),
+                    child: Column(
+                      children: [
+                        const Text(
+                          "No Internet!",
+                          style: TextStyle(
+                              fontSize: 50,
+                              fontFamily: 'F',
+                              color: Colors.white),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {});
+                                },
+                                icon: const Icon(
+                                  Icons.refresh,
+                                  size: 40,
+                                  color: Colors.white,
+                                )),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const Text(
+                              "refresh",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'F',
+                                  color: Colors.white),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
                   ),
                 ),

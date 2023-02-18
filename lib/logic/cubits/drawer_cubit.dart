@@ -13,14 +13,20 @@ class DrawerCubit extends Cubit<DrawerState_> {
     emit(DrawerHome());
   }
 
-  goToProfile() {
+  goToOffers() {
     pageIndex = 1;
+
+    emit(DrawerOffers());
+  }
+
+  goToProfile() {
+    pageIndex = 2;
 
     emit(DrawerProfile());
   }
 
   goToAbout() {
-    pageIndex = 2;
+    pageIndex = 3;
 
     emit(DrawerAbout());
   }

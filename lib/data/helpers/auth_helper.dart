@@ -4,6 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:king_app/data/helpers/firestore_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/string.dart';
 import '../../data/models/user_model.dart';
@@ -18,8 +19,8 @@ class AuthenticationHelper {
   static AuthenticationHelper get instance => _instance;
   final auth = FirebaseAuth.instance;
 
-  Future<void> emailLogin(BuildContext context, TextEditingController passwordCon,
-      TextEditingController emailCon) async {
+  Future<void> emailLogin(BuildContext context,
+      TextEditingController passwordCon, TextEditingController emailCon) async {
     ScaffoldMessenger.of(context).clearMaterialBanners();
     if (passwordCon.text.isEmpty || emailCon.text.isEmpty) {
       bannerBuilder(
@@ -204,8 +205,6 @@ class AuthenticationHelper {
   }
 
   Future<UserModel> getUserCredential() async {
-    final auth = FirebaseAuth.instance;
-
     UserModel user = UserModel(
         uid: auth.currentUser!.uid,
         name: auth.currentUser!.displayName!,

@@ -9,8 +9,10 @@ Widget drawerItem(
       if (index == 0) {
         BlocProvider.of<DrawerCubit>(context).goToHome();
       } else if (index == 1) {
-        BlocProvider.of<DrawerCubit>(context).goToProfile();
+        BlocProvider.of<DrawerCubit>(context).goToOffers();
       } else if (index == 2) {
+        BlocProvider.of<DrawerCubit>(context).goToProfile();
+      } else if (index == 3) {
         BlocProvider.of<DrawerCubit>(context).goToAbout();
       }
     },

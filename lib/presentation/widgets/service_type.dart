@@ -15,11 +15,14 @@ class ServiceType extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, Routes.serviceListRoute,
-                arguments: ServiceList(
-                  type: type,
-                  service: service,
-                ));
+            Navigator.pushNamed(
+              context,
+              Routes.serviceListRoute,
+              arguments: ServiceList(
+                type: type,
+                service: service,
+              ),
+            );
           },
           child: Material(
             elevation: 15,
@@ -29,7 +32,7 @@ class ServiceType extends StatelessWidget {
               height: 100,
               constraints: const BoxConstraints(minWidth: 100),
               decoration: BoxDecoration(
-                  color: ColorConst.mainColor,
+                  color: ColorConst.secColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30))),
