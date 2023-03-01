@@ -524,8 +524,7 @@ class _InfoPageState extends State<InfoPage> {
                                                     height: 30,
                                                   ),
                                                   snapshot.data!.reviews
-                                                              .length >
-                                                          0
+                                                          .isNotEmpty
                                                       ? SfCircularChart(
                                                           palette: [
                                                             Colors.blue[100]!,
