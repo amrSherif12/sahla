@@ -224,125 +224,137 @@ class _InfoPageState extends State<InfoPage> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  snapshot.data!.instagram != "null" ? Row(
-                                                    children: [
-                                                      SizedBox(
-                                                        width: 50,
-                                                        height: 50,
-                                                        child: GestureDetector(
-                                                            onTap: () async {
-                                                              await launchUrl(
-                                                                Uri(
-                                                                    scheme: 'https',
-                                                                    host:
-                                                                        'www.instagram.com',
-                                                                    path: snapshot
-                                                                        .data!
-                                                                        .instagram),
-                                                                mode: LaunchMode
-                                                                    .externalNonBrowserApplication,
-                                                              );
-                                                            },
-                                                            child: Image.asset(
-                                                                'assets/imgs/instaLogo.png')),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 20,
-                                                      ),
-                                                    ],
-                                                  ) : Container(),
-                                                  snapshot.data!.facebook != "null" ? Row(
-                                                    children: [
-                                                      SizedBox(
-                                                        width: 44,
-                                                        height: 44,
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  8),
-                                                          child: GestureDetector(
-                                                              onTap: () async {
-                                                                await launchUrl(
-                                                                  Uri(
-                                                                      scheme:
-                                                                          'https',
-                                                                      host:
-                                                                          'www.facebook.com',
-                                                                      path: snapshot
-                                                                          .data!
-                                                                          .facebook),
-                                                                  mode: LaunchMode
-                                                                      .externalApplication,
-                                                                );
-                                                              },
-                                                              child: Image.asset(
-                                                                  'assets/imgs/facebookLogo.png')),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 20,
-                                                      ),
-                                                    ],
-                                                  ) : Container(),
-                                                  snapshot.data!.phoneNumber != "null" ? Row(
-                                                    children: [
-                                                      SizedBox(
-                                                        width: 44,
-                                                        height: 44,
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  9),
-                                                          child: GestureDetector(
-                                                              onTap: () async {
-                                                                await launchUrl(
-                                                                  Uri(
-                                                                      scheme: 'tel',
-                                                                      path: snapshot
-                                                                          .data!
-                                                                          .phoneNumber),
-                                                                  mode: LaunchMode
-                                                                      .externalNonBrowserApplication,
-                                                                );
-                                                              },
-                                                              child: Image.asset(
-                                                                  'assets/imgs/dial.png')),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 20,
-                                                      ),
-                                                    ],
-                                                  ) : Container(),
-                                                  snapshot.data!.whatsapp != "null" ? Row(
-                                                    children: [
-                                                      SizedBox(
-                                                        width: 44,
-                                                        height: 44,
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  9),
-                                                          child: GestureDetector(
-                                                              onTap: () async {
-                                                                await launchUrl(
-                                                                  Uri(
-                                                                      scheme:
-                                                                          'https',
-                                                                      host: 'wa.me',
-                                                                      path: snapshot
-                                                                          .data!
-                                                                          .whatsapp),
-                                                                  mode: LaunchMode
-                                                                      .externalNonBrowserApplication,
-                                                                );
-                                                              },
-                                                              child: Image.asset(
-                                                                  'assets/imgs/whatsapp.jpeg')),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ) : Container(),
+                                                  snapshot.data!.instagram !=
+                                                          "null"
+                                                      ? Row(
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 50,
+                                                              height: 50,
+                                                              child:
+                                                                  GestureDetector(
+                                                                      onTap:
+                                                                          () async {
+                                                                        await launchUrl(
+                                                                          Uri(
+                                                                              scheme: 'https',
+                                                                              host: 'www.instagram.com',
+                                                                              path: snapshot.data!.instagram),
+                                                                          mode:
+                                                                              LaunchMode.externalNonBrowserApplication,
+                                                                        );
+                                                                      },
+                                                                      child: Image
+                                                                          .asset(
+                                                                              'assets/imgs/instaLogo.png')),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 20,
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : Container(),
+                                                  snapshot.data!.facebook !=
+                                                          "null"
+                                                      ? Row(
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 44,
+                                                              height: 44,
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8),
+                                                                child:
+                                                                    GestureDetector(
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchUrl(
+                                                                            Uri(
+                                                                                scheme: 'https',
+                                                                                host: 'www.facebook.com',
+                                                                                path: snapshot.data!.facebook),
+                                                                            mode:
+                                                                                LaunchMode.externalApplication,
+                                                                          );
+                                                                        },
+                                                                        child: Image.asset(
+                                                                            'assets/imgs/facebookLogo.png')),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 20,
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : Container(),
+                                                  snapshot.data!.phoneNumber !=
+                                                          "null"
+                                                      ? Row(
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 44,
+                                                              height: 44,
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            9),
+                                                                child:
+                                                                    GestureDetector(
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchUrl(
+                                                                            Uri(
+                                                                                scheme: 'tel',
+                                                                                path: snapshot.data!.phoneNumber),
+                                                                            mode:
+                                                                                LaunchMode.externalNonBrowserApplication,
+                                                                          );
+                                                                        },
+                                                                        child: Image.asset(
+                                                                            'assets/imgs/dial.png')),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 20,
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : Container(),
+                                                  snapshot.data!.whatsapp !=
+                                                          "null"
+                                                      ? Row(
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 44,
+                                                              height: 44,
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            9),
+                                                                child:
+                                                                    GestureDetector(
+                                                                        onTap:
+                                                                            () async {
+                                                                          await launchUrl(
+                                                                            Uri(
+                                                                                scheme: 'https',
+                                                                                host: 'wa.me',
+                                                                                path: snapshot.data!.whatsapp),
+                                                                            mode:
+                                                                                LaunchMode.externalNonBrowserApplication,
+                                                                          );
+                                                                        },
+                                                                        child: Image.asset(
+                                                                            'assets/imgs/whatsapp.jpeg')),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : Container(),
                                                 ],
                                               ),
                                             ],
@@ -511,55 +523,73 @@ class _InfoPageState extends State<InfoPage> {
                                                   const SizedBox(
                                                     height: 30,
                                                   ),
-                                                  SfCircularChart(
-                                                    palette: [
-                                                      Colors.blue[100]!,
-                                                      Colors.blue[300]!,
-                                                      Colors.blue[500]!,
-                                                      Colors.blue[700]!,
-                                                      Colors.blue[900]!
-                                                    ],
-                                                    legend: Legend(
-                                                        isVisible: true,
-                                                        shouldAlwaysShowScrollbar:
-                                                            true,
-                                                        overflowMode:
-                                                            LegendItemOverflowMode
-                                                                .scroll,
-                                                        textStyle:
-                                                            const TextStyle(
+                                                  snapshot.data!.reviews
+                                                              .length >
+                                                          0
+                                                      ? SfCircularChart(
+                                                          palette: [
+                                                            Colors.blue[100]!,
+                                                            Colors.blue[300]!,
+                                                            Colors.blue[500]!,
+                                                            Colors.blue[700]!,
+                                                            Colors.blue[900]!
+                                                          ],
+                                                          legend: Legend(
+                                                              isVisible: true,
+                                                              shouldAlwaysShowScrollbar:
+                                                                  true,
+                                                              overflowMode:
+                                                                  LegendItemOverflowMode
+                                                                      .scroll,
+                                                              textStyle:
+                                                                  const TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontFamily:
+                                                                          'F')),
+                                                          series: <
+                                                              CircularSeries>[
+                                                            DoughnutSeries<
+                                                                    ServiceStars,
+                                                                    String>(
+                                                                dataSource:
+                                                                    chartData,
+                                                                strokeColor: Colors
+                                                                    .white,
+                                                                strokeWidth: 1,
+                                                                xValueMapper: (ServiceStars
+                                                                            data,
+                                                                        _) =>
+                                                                    data.stars,
+                                                                yValueMapper:
+                                                                    (ServiceStars
+                                                                                data,
+                                                                            _) =>
+                                                                        data
+                                                                            .amount,
+                                                                animationDuration:
+                                                                    4000,
+                                                                enableTooltip:
+                                                                    true)
+                                                          ],
+                                                          tooltipBehavior:
+                                                              TooltipBehavior(
+                                                                  enable: true,
+                                                                  elevation:
+                                                                      10),
+                                                        )
+                                                      : const FittedBox(
+                                                          child: Text(
+                                                            "No reviews",
+                                                            style: TextStyle(
                                                                 color: Colors
                                                                     .white,
-                                                                fontSize: 15,
-                                                                fontFamily:
-                                                                    'F')),
-                                                    series: <CircularSeries>[
-                                                      DoughnutSeries<
-                                                              ServiceStars,
-                                                              String>(
-                                                          dataSource: chartData,
-                                                          strokeColor:
-                                                              Colors.white,
-                                                          strokeWidth: 1,
-                                                          xValueMapper:
-                                                              (ServiceStars
-                                                                          data,
-                                                                      _) =>
-                                                                  data.stars,
-                                                          yValueMapper:
-                                                              (ServiceStars
-                                                                          data,
-                                                                      _) =>
-                                                                  data.amount,
-                                                          animationDuration:
-                                                              4000,
-                                                          enableTooltip: true)
-                                                    ],
-                                                    tooltipBehavior:
-                                                        TooltipBehavior(
-                                                            enable: true,
-                                                            elevation: 10),
-                                                  ),
+                                                                fontFamily: 'F',
+                                                                fontSize: 30),
+                                                          ),
+                                                        ),
                                                 ],
                                               ),
                                             ),
