@@ -276,7 +276,7 @@ class _InfoPageState extends State<InfoPage> {
                                                                                 host: 'www.facebook.com',
                                                                                 path: snapshot.data!.facebook),
                                                                             mode:
-                                                                                LaunchMode.externalApplication,
+                                                                                LaunchMode.externalNonBrowserApplication,
                                                                           );
                                                                         },
                                                                         child: Image.asset(
