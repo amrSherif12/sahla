@@ -167,13 +167,25 @@ class _InfoPageState extends State<InfoPage> {
                                               const SizedBox(
                                                 width: 15,
                                               ),
-                                              SelectableText(
-                                                snapshot.data!.phoneNumber,
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'F',
-                                                    color: Colors.white),
-                                              ),
+                                              snapshot.data!.phoneNumber !=
+                                                      "null"
+                                                  ? SelectableText(
+                                                      snapshot
+                                                          .data!.phoneNumber,
+                                                      style: const TextStyle(
+                                                          fontSize: 20,
+                                                          fontFamily: 'F',
+                                                          color: Colors.white),
+                                                    )
+                                                  : const Text(
+                                                      "No phone number",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontFamily: 'F',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors.white),
+                                                    ),
                                               const SizedBox(
                                                 width: 50,
                                               ),
@@ -212,109 +224,125 @@ class _InfoPageState extends State<InfoPage> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  SizedBox(
-                                                    width: 50,
-                                                    height: 50,
-                                                    child: GestureDetector(
-                                                        onTap: () async {
-                                                          await launchUrl(
-                                                            Uri(
-                                                                scheme: 'https',
-                                                                host:
-                                                                    'www.instagram.com',
-                                                                path: snapshot
-                                                                    .data!
-                                                                    .instagram),
-                                                            mode: LaunchMode
-                                                                .externalNonBrowserApplication,
-                                                          );
-                                                        },
-                                                        child: Image.asset(
-                                                            'assets/imgs/instaLogo.png')),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 20,
-                                                  ),
-                                                  SizedBox(
-                                                    width: 44,
-                                                    height: 44,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                      child: GestureDetector(
-                                                          onTap: () async {
-                                                            await launchUrl(
-                                                              Uri(
-                                                                  scheme:
-                                                                      'https',
-                                                                  host:
-                                                                      'www.facebook.com',
-                                                                  path: snapshot
-                                                                      .data!
-                                                                      .facebook),
-                                                              mode: LaunchMode
-                                                                  .externalApplication,
-                                                            );
-                                                          },
-                                                          child: Image.asset(
-                                                              'assets/imgs/facebookLogo.png')),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 20,
-                                                  ),
-                                                  SizedBox(
-                                                    width: 44,
-                                                    height: 44,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              9),
-                                                      child: GestureDetector(
-                                                          onTap: () async {
-                                                            await launchUrl(
-                                                              Uri(
-                                                                  scheme: 'tel',
-                                                                  path: snapshot
-                                                                      .data!
-                                                                      .phoneNumber),
-                                                              mode: LaunchMode
-                                                                  .externalNonBrowserApplication,
-                                                            );
-                                                          },
-                                                          child: Image.asset(
-                                                              'assets/imgs/dial.png')),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 20,
-                                                  ),
-                                                  SizedBox(
-                                                    width: 44,
-                                                    height: 44,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              9),
-                                                      child: GestureDetector(
-                                                          onTap: () async {
-                                                            await launchUrl(
-                                                              Uri(
-                                                                  scheme:
-                                                                      'https',
-                                                                  host: 'wa.me',
-                                                                  path: snapshot
-                                                                      .data!
-                                                                      .phoneNumber),
-                                                              mode: LaunchMode
-                                                                  .externalNonBrowserApplication,
-                                                            );
-                                                          },
-                                                          child: Image.asset(
-                                                              'assets/imgs/whatsapp.jpeg')),
-                                                    ),
-                                                  ),
+                                                  snapshot.data!.instagram != "null" ? Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 50,
+                                                        height: 50,
+                                                        child: GestureDetector(
+                                                            onTap: () async {
+                                                              await launchUrl(
+                                                                Uri(
+                                                                    scheme: 'https',
+                                                                    host:
+                                                                        'www.instagram.com',
+                                                                    path: snapshot
+                                                                        .data!
+                                                                        .instagram),
+                                                                mode: LaunchMode
+                                                                    .externalNonBrowserApplication,
+                                                              );
+                                                            },
+                                                            child: Image.asset(
+                                                                'assets/imgs/instaLogo.png')),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                    ],
+                                                  ) : Container(),
+                                                  snapshot.data!.facebook != "null" ? Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 44,
+                                                        height: 44,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  8),
+                                                          child: GestureDetector(
+                                                              onTap: () async {
+                                                                await launchUrl(
+                                                                  Uri(
+                                                                      scheme:
+                                                                          'https',
+                                                                      host:
+                                                                          'www.facebook.com',
+                                                                      path: snapshot
+                                                                          .data!
+                                                                          .facebook),
+                                                                  mode: LaunchMode
+                                                                      .externalApplication,
+                                                                );
+                                                              },
+                                                              child: Image.asset(
+                                                                  'assets/imgs/facebookLogo.png')),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                    ],
+                                                  ) : Container(),
+                                                  snapshot.data!.phoneNumber != "null" ? Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 44,
+                                                        height: 44,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  9),
+                                                          child: GestureDetector(
+                                                              onTap: () async {
+                                                                await launchUrl(
+                                                                  Uri(
+                                                                      scheme: 'tel',
+                                                                      path: snapshot
+                                                                          .data!
+                                                                          .phoneNumber),
+                                                                  mode: LaunchMode
+                                                                      .externalNonBrowserApplication,
+                                                                );
+                                                              },
+                                                              child: Image.asset(
+                                                                  'assets/imgs/dial.png')),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                    ],
+                                                  ) : Container(),
+                                                  snapshot.data!.whatsapp != "null" ? Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 44,
+                                                        height: 44,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  9),
+                                                          child: GestureDetector(
+                                                              onTap: () async {
+                                                                await launchUrl(
+                                                                  Uri(
+                                                                      scheme:
+                                                                          'https',
+                                                                      host: 'wa.me',
+                                                                      path: snapshot
+                                                                          .data!
+                                                                          .whatsapp),
+                                                                  mode: LaunchMode
+                                                                      .externalNonBrowserApplication,
+                                                                );
+                                                              },
+                                                              child: Image.asset(
+                                                                  'assets/imgs/whatsapp.jpeg')),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ) : Container(),
                                                 ],
                                               ),
                                             ],

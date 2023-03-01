@@ -13,10 +13,12 @@ class ServiceDetailsModel extends ServiceModel {
       required this.location,
       required this.averageRating,
       required this.userReview,
-      required this.starsCount,
+       required this.starsCount,
       required this.textReviews,
       required this.facebook,
-      required this.instagram})
+      required this.instagram,
+      required this.whatsapp,
+      })
       : super(id: id, img: img, name: name);
 
   String phoneNumber;
@@ -28,6 +30,7 @@ class ServiceDetailsModel extends ServiceModel {
   List<ReviewModel> textReviews;
   String instagram;
   String facebook;
+  String whatsapp;
 
   factory ServiceDetailsModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document,
@@ -43,6 +46,7 @@ class ServiceDetailsModel extends ServiceModel {
       location: data["location"],
       instagram: data["instagram"],
       facebook: data["facebook"],
+      whatsapp: data["whatsapp"],
       reviews: reviews,
       averageRating: ReviewsModel.getAverageRating(reviews),
       userReview: ReviewsModel.getUserReview(reviews, uid, name),
